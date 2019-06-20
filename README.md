@@ -1,6 +1,6 @@
 # demolab-juniper
 
-iFrom virtual BGP IP Fabric demo lab to...
+From virtual BGP IP Fabric demo lab to...
 
 ![Virtual demo lab](Juniper-IP-Fabric.jpg)
 
