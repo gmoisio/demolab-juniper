@@ -7,3 +7,9 @@ Form virtual demo lab to...
 ... Physical one!
 
 ![Physical demo lab](Juniper-demo-lab.jpg)
+
+## Environment
+- Linux Ubuntu 18.04 Xeon server
+- Vagrant 2.0.2
+- VboxManage 5.12.18
+

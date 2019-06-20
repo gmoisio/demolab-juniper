@@ -63,4 +63,18 @@ Vagrant.configure("2") do |config|
     end
   end
 
+#######################
+# Box provisioning    #
+#######################
+  config.vm.provision "ansible" do |ansible|
+    ansible.compatibility_mode = "2.0"
+    ansible.groups = {
+                "qfx"          => ["spine01", "spine02", "leaf01", "leaf02"],
+                "spine"        => ["spine01", "spine02"],
+                "leaf"         => ["leaf01", "leaf02"],
+                "all:children" => ["vqfx"]
+            }
+    ansible.playbook = "site.yml"
+  end
+
 end

@@ -1,0 +1,12 @@
+- name: Create demo lab Juniper
+  hosts: qfx
+  vars:
+    connection_settings:
+      host: "{{ ansible_ssh_host }}"
+      port: "{{ ansible_ssh_port }}"
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+    - common
+
