@@ -1,2 +1,19 @@
 system:
   hostname: spine02
+  loopback_ip: 1.1.1.2
+
+underlay:
+  local:
+    asn: 60002
+  neighbors:
+    - interface: em5
+      name: leaf01
+      asn: 60011
+      peer_ip: "{{ p2p.link2.2 }}"
+      local_ip: "{{ p2p.link2.1 }}"
+    - interface: em6
+      name: leaf02
+      asn: 60012
+      peer_ip: "{{ p2p.link4.2 }}"
+      local_ip: "{{ p2p.link4.1 }}"
+

@@ -1,6 +1,6 @@
 # demolab-juniper
 
-Form virtual demo lab to...
+iFrom virtual BGP IP Fabric demo lab to...
 
 ![Virtual demo lab](Juniper-IP-Fabric.jpg)
 
@@ -12,4 +12,5 @@ Form virtual demo lab to...
 - Linux Ubuntu 18.04 Xeon server
 - Vagrant 2.0.2
 - VboxManage 5.12.18
-
+- Ansible 2.8.1
+- Role juniper.junos 2.1.0

@@ -72,7 +72,7 @@ Vagrant.configure("2") do |config|
                 "qfx"          => ["spine01", "spine02", "leaf01", "leaf02"],
                 "spine"        => ["spine01", "spine02"],
                 "leaf"         => ["leaf01", "leaf02"],
-                "all:children" => ["vqfx"]
+                "all:children" => ["qfx"]
             }
     ansible.playbook = "site.yml"
   end

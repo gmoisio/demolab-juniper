@@ -1,2 +1,18 @@
 system:
   hostname: leaf01
+  loopback_ip: 1.1.1.11
+
+underlay:
+  local:
+    asn: 60011
+  neighbors:
+    - interface: em5
+      name: spine01
+      asn: 60001
+      peer_ip: "{{ p2p.link1.1 }}"
+      local_ip: "{{ p2p.link1.2 }}"
+    - interface: em6
+      name: spine02
+      asn: 60002
+      peer_ip: "{{ p2p.link2.1 }}"
+      local_ip: "{{ p2p.link2.2 }}"

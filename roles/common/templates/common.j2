@@ -11,5 +11,9 @@ system {
             ssh;
         }
     }
-    host-name {{ system.hostname }};
+}
+protocols {
+    lldp {
+        interface all;
+    }
 }
