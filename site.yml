@@ -7,6 +7,9 @@
   connection: local
   gather_facts: no
   roles:
-    - Juniper.junos
-    - common
-    - underlay
+    - role: Juniper.junos
+      tags: [ bgp, ospf ]
+    - role: common
+      tags: [ bgp, ospf ]
+    - role: underlay_bgp
+      tags: [ bgp]
