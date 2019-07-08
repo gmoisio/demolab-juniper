@@ -1,6 +1,6 @@
 # demolab-juniper
 
-From virtual BGP IP Fabric demo lab to...
+From virtual IP Fabric demo lab to...
 
 ![Virtual demo lab](Juniper-IP-Fabric.jpg)
 
@@ -23,12 +23,16 @@ From virtual BGP IP Fabric demo lab to...
 
 *For BGP IP Fabric*
 - ansible-playbook site.yml --tags "bgp"
+
 or
+
 - Change Vagrantfile tag to bgp and vagrant up --provision
 
 *To change IP Fabric to OSPF*
 - ansible-playbook site.yml --tags "load_rescue,ospf"
+
 or
+
 - ansible-playbook site.yml --tags "load_rescue"
 - Change Vagrantfile tag to ospf and vagrant up --provision
 
