@@ -10,10 +10,12 @@ underlay:
       name: leaf01
       asn: 60011
       peer_ip: "{{ p2p.link2.2 }}"
+      peer_loopback: 1.1.1.11
       local_ip: "{{ p2p.link2.1 }}"
     - interface: em6
       name: leaf02
       asn: 60012
       peer_ip: "{{ p2p.link4.2 }}"
+      peer_loopback: 1.1.1.12
       local_ip: "{{ p2p.link4.1 }}"
 

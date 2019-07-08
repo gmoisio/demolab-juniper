@@ -1,7 +1,7 @@
 ---
-- name: Build underlay configuration
+- name: Build BGP underlay configuration
   template: src=underlay.j2 dest=/tmp/{{ inventory_hostname }}.conf
-- name: Deploy underlay configuration to device ... please wait
+- name: Deploy BGP underlay configuration to device ... please wait
   juniper_junos_config:
     load: 'merge'
     src: "/tmp/{{ inventory_hostname }}.conf"

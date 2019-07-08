@@ -16,3 +16,6 @@ From virtual BGP IP Fabric demo lab to...
 - Jinja2 2.10.1
 - Role juniper.junos 2.1.0
 - Junos-eznc 2.2.0
+
+## Usage
+Use tag (bgp or ospf) to change the underlay Fabric model

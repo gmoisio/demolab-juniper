@@ -1,3 +1,4 @@
+---
 - name: Create demo lab Juniper
   hosts: qfx
   vars:
@@ -12,4 +13,6 @@
     - role: common
       tags: [ bgp, ospf ]
     - role: underlay_bgp
-      tags: [ bgp]
+      tags: [ bgp ]
+    - role: check_bgp
+      tags: [ bgp ]
