@@ -4,12 +4,14 @@ system {
 interfaces {
 {% for neighbor in underlay.neighbors %}
     {{ neighbor.interface }} {
-        mtu 9192
+{% if neighbor.remote_interface is defined %}
+        description " * to {{ neighbor.name }} -- {{ neighbor.remote_interface }}";
+{% else %}
+        description " * to {{ neighbor.name }}";
+{% endif %}
         unit 0 {
-            description "to {{ neighbor.name }}";
             family inet {
-                mtu 9000;
-                address {{ neighbor.local_ip }}/31;
+                address {{ neighbor.local_ip }}/{{ underlay.network_size }};
             }
         }
     }

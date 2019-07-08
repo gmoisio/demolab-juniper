@@ -20,3 +20,7 @@
       tags: [ bgp ]
     - role: check_bgp
       tags: [ bgp ]
+    - role: underlay_ospf
+      tags: [ ospf ]
+    - role: check_ospf
+      tags: [ ospf ]

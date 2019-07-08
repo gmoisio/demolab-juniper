@@ -1,0 +1,59 @@
+---
+   - pause: seconds=30
+
+   - name: Check if interfaces admin status is up
+     junos_command:
+       provider: "{{ connection_settings }}"
+       display: 'xml'
+       commands:
+         - "show interfaces terse {{ item.interface }}"
+       waitfor:
+         - "result[0]['rpc-reply']['interface-information']['physical-interface']['admin-status'] eq up"
+       retries: 3
+       interval: 3
+     with_items:
+       - "{{ underlay.neighbors }}"
+     when: item.interface is defined
+
+   - name: Check if interfaces op status is up
+     junos_command:
+       provider: "{{ connection_settings }}"
+       display: 'xml'
+       commands:
+         - "show interfaces terse {{ item.interface }}"
+       waitfor:
+         - "result[0]['rpc-reply']['interface-information']['physical-interface']['oper-status'] eq up"
+       retries: 3
+       interval: 3
+     with_items:
+       - "{{ underlay.neighbors }}"
+     when: item.interface is defined
+
+   - name: Check if ospf peers state is Established
+     junos_command:
+       provider: "{{ connection_settings }}"
+       display: 'xml'
+       commands:
+         - show ospf neighbor "{{ item.peer_ip }}"
+       waitfor:
+         - "result[0]['rpc-reply']['ospf-neighbor-information']['ospf-neighbor']['ospf-neighbor-state'] eq 'Full'"
+       retries: 3
+       interval: 3
+     with_items:
+       - "{{ underlay.neighbors }}"
+     when: item.peer_ip is defined
+
+   - name: Check if junos devices learnt some routes with OSPF
+     junos_command:
+       provider: "{{ connection_settings }}"
+       display: 'xml'
+       commands:
+         - show route protocol ospf table inet.0
+       waitfor:
+         - "result[0]['rpc-reply']['route-information']['route-table']['total-route-count'] gt 2"
+       retries: 3
+       interval: 3
+     with_items:
+       - "{{ underlay.neighbors }}"
+     when: item.peer_ip is defined
+

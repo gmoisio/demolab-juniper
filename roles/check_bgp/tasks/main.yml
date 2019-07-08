@@ -1,4 +1,6 @@
 ---
+   - pause: seconds=30
+
    - name: Check if interfaces admin status is up
      junos_command:
        provider: "{{ connection_settings }}"
