@@ -1,0 +1,10 @@
+---
+- name: Save current active configuration as rescue
+  juniper_junos_command:
+    provider: "{{ connection_settings }}"
+    commands: "request system configuration rescue save"
+  register: response
+
+- name: Print the command output
+  debug:
+    var: response.stdout

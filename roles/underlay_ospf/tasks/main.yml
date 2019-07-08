@@ -1,0 +1,11 @@
+---
+- name: Build OSPF underlay configuration
+  template: src=underlay.j2 dest=/tmp/{{ inventory_hostname }}.conf
+- name: Deploy OSPF underlay configuration to device ... please wait
+  juniper_junos_config:
+    load: 'merge'
+    src: "/tmp/{{ inventory_hostname }}.conf"
+    provider: "{{ connection_settings }}"
+    format: text
+    logfile: /tmp/changes.log
+

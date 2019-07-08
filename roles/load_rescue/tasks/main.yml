@@ -1,0 +1,11 @@
+---
+- name: Load rescue configuration
+  juniper_junos_config:
+    provider: "{{ connection_settings }}"
+    rollback: "rescue"   
+  register: response
+
+- name: Print the command output
+  debug:
+    var: response
+

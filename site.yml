@@ -9,7 +9,11 @@
   gather_facts: no
   roles:
     - role: Juniper.junos
-      tags: [ bgp, ospf ]
+      tags: [ bgp, ospf, save_rescue, load_rescue ]
+    - role: save_rescue
+      tags: [ save_rescue ]
+    - role: load_rescue
+      tags: [ load_rescue ]
     - role: common
       tags: [ bgp, ospf ]
     - role: underlay_bgp

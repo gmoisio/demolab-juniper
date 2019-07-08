@@ -75,7 +75,7 @@ Vagrant.configure("2") do |config|
                 "all:children" => ["qfx"]
             }
     ansible.playbook = "site.yml"
-    ansible.tags = "bgp"
+    ansible.tags = "ospf"
   end
 
 end
