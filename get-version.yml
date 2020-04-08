@@ -1,0 +1,26 @@
+---
+- name: Get device version
+  hosts: qfx
+  vars:
+    connection_settings:
+      host: "{{ ansible_ssh_host }}"
+      port: "{{ ansible_ssh_port }}"
+    ansible_python_interpreter: "/usr/bin/python3"
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  tasks:
+    # show version | display xml rpc
+    # show version | display xml
+    - name: Get version using galaxy module
+      juniper_junos_rpc:
+        provider: "{{ connection_settings }}"
+        rpcs:
+          - get-software-information
+      register: version
+    - name: Display version
+      debug:
+        msg: "Device is running {{ version.parsed_output['multi-routing-engine-results']['multi-routing-engine-item']['software-information']['junos-version'] }}"
+      when: version.parsed_output['multi-routing-engine-results'] is defined
+

@@ -1,6 +1,4 @@
 ---
-   - pause: seconds=30
-
    - name: Check if interfaces admin status is up
      junos_command:
        provider: "{{ connection_settings }}"
@@ -11,8 +9,7 @@
          - "result[0]['rpc-reply']['interface-information']['physical-interface']['admin-status'] eq up"
        retries: 3
        interval: 3
-     with_items:
-       - "{{ underlay.neighbors }}"
+     loop: "{{ underlay.neighbors }}"
      when: item.interface is defined
 
    - name: Check if interfaces op status is up
@@ -25,11 +22,10 @@
          - "result[0]['rpc-reply']['interface-information']['physical-interface']['oper-status'] eq up"
        retries: 3
        interval: 3
-     with_items:
-       - "{{ underlay.neighbors }}"
+     loop: "{{ underlay.neighbors }}"
      when: item.interface is defined
 
-   - name: Check if ospf peers state is Established
+   - name: Check if OSPF peers state is Established
      junos_command:
        provider: "{{ connection_settings }}"
        display: 'xml'
@@ -37,12 +33,12 @@
          - show ospf neighbor "{{ item.peer_ip }}"
        waitfor:
          - "result[0]['rpc-reply']['ospf-neighbor-information']['ospf-neighbor']['ospf-neighbor-state'] eq 'Full'"
-       retries: 3
-       interval: 3
-     with_items:
-       - "{{ underlay.neighbors }}"
+       retries: 10
+       interval: 5
+     loop: "{{ underlay.neighbors }}"
      when: item.peer_ip is defined
 
+# At least one entry for each network segment and one for each router's loopback address
    - name: Check if junos devices learnt some routes with OSPF
      junos_command:
        provider: "{{ connection_settings }}"
@@ -50,10 +46,20 @@
        commands:
          - show route protocol ospf table inet.0
        waitfor:
-         - "result[0]['rpc-reply']['route-information']['route-table']['total-route-count'] gt 2"
-       retries: 3
-       interval: 3
-     with_items:
-       - "{{ underlay.neighbors }}"
+         - "result[0]['rpc-reply']['route-information']['route-table']['total-route-count'] ge 7"
+       retries: 10
+       interval: 5
+     loop: "{{ underlay.neighbors }}"
      when: item.peer_ip is defined
+
+   - name: Check if junos devices can ping some dest
+     juniper_junos_ping:
+       provider: "{{ connection_settings }}"
+       dest: "{{ item.peer_ip }}"
+       source: "{{ item.local_ip }}"
+       ttl: 1
+       acceptable_percent_loss: 40
+     loop: "{{ underlay.neighbors }}"
+     when: (item.local_ip) is defined and (item.peer_loopback) is defined
+     ignore_errors: yes
 

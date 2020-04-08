@@ -1,0 +1,8 @@
+bgp_summary:
+  - command: show bgp summary
+  - item:
+      xpath: '/bgp-information'
+      tests:
+        - is-equal: down-peer-count, 0
+          err: "Test Failed!! down-peer-count is not equal to 0. It is equal to <{{post['down-peer-count']}}>"
+          info: "Test succeeded!! down-peer-count is equal to <{{post['down-peer-count']}}>"

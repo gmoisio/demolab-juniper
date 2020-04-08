@@ -5,11 +5,11 @@
     connection_settings:
       host: "{{ ansible_ssh_host }}"
       port: "{{ ansible_ssh_port }}"
+    ansible_python_interpreter: "/usr/bin/python3"
   connection: local
   gather_facts: no
   roles:
     - role: Juniper.junos
-      tags: [ bgp, ospf, save_rescue, load_rescue ]
     - role: save_rescue
       tags: [ save_rescue ]
     - role: load_rescue
@@ -19,8 +19,8 @@
     - role: underlay_bgp
       tags: [ bgp ]
     - role: check_bgp
-      tags: [ bgp ]
+      tags: [ bgp, check_bgp ]
     - role: underlay_ospf
       tags: [ ospf ]
     - role: check_ospf
-      tags: [ ospf ]
+      tags: [ ospf, check_ospf ]

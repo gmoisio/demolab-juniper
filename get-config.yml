@@ -1,0 +1,25 @@
+---
+- name: Get device facts
+  hosts: all
+  vars:
+    connection_settings:
+      host: "{{ ansible_ssh_host }}"
+      port: "{{ ansible_ssh_port }}"
+    ansible_python_interpreter: "python"
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  tasks:
+    - name: Get facts using galaxy module
+      juniper_junos_facts:
+        provider: "{{ connection_settings }}"
+        # Can take none, xml, set, text or json
+        config_format: set
+      register: facts
+    - name: Backup config in file
+      copy:
+        content: "{{ facts.ansible_facts.junos.config }}"
+        dest: "{{ inventory_hostname }}_{{ '%Y-%m-%d_%H:%M:%S' | strftime }}.conf"
+      when: facts.ansible_facts.junos.config is defined
+
