@@ -21,3 +21,4 @@ class JunosDevice(object):
     def get_device_os_version(self):
         facts = self.get_device_info()
         return facts["version"]
+

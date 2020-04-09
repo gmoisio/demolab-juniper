@@ -1,8 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.6.9 on linux)" generated="20200408 18:09:17.635" rpa="false">
+<robot generator="Robot 3.1.2 (Python 3.6.9 on linux)" generated="20200409 14:36:19.777" rpa="false">
 <suite id="s1" name="Check Junos Config" source="/home/gilbert/juniper/demolab-juniper/robot/check_junos_config.robot">
 <test id="s1-t1" name="Ckeck Junos OS Version">
 <kw name="${VQFX} IN [ @{VQFXS} ]" type="for">
+<kw name="${VQFX} = {'ip': '127.0.0.1', 'port': '2222'}" type="foritem">
+<kw name="Connect Device" library="JunosDevice">
+<arguments>
+<arg>host=${VQFX['ip']}</arg>
+<arg>port=${VQFX['port']}</arg>
+<arg>user=${USERNAME}</arg>
+<arg>password=${PASSWORD}</arg>
+</arguments>
+<msg timestamp="20200409 14:36:20.205" level="INFO">[host 127.0.0.1 session-id 3927] initialized: session-id=3927 | server_capabilities=&lt;dict_keyiterator object at 0x7f481764c818&gt;</msg>
+<status status="PASS" starttime="20200409 14:36:19.927" endtime="20200409 14:36:20.205"></status>
+</kw>
+<kw name="Get Device Os Version" library="JunosDevice">
+<assign>
+<var>${version}</var>
+</assign>
+<msg timestamp="20200409 14:36:20.206" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:20.309" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:20.428" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:20.547" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:20.691" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:20.797" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:21.427" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:21.531" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:21.643" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:21.745" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:21.849" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:21.956" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:22.061" level="INFO">${version} = 19.4R1.10</msg>
+<status status="PASS" starttime="20200409 14:36:20.205" endtime="20200409 14:36:22.061"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${version}</arg>
+<arg>${JUNOS}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 14:36:22.061" endtime="20200409 14:36:22.061"></status>
+</kw>
+<kw name="Close Device" library="JunosDevice">
+<msg timestamp="20200409 14:36:22.062" level="INFO">[host 127.0.0.1 session-id 3927] Requesting 'CloseSession'</msg>
+<status status="PASS" starttime="20200409 14:36:22.061" endtime="20200409 14:36:22.168"></status>
+</kw>
+<status status="PASS" starttime="20200409 14:36:19.927" endtime="20200409 14:36:22.168"></status>
+</kw>
 <kw name="${VQFX} = {'ip': '127.0.0.1', 'port': '2200'}" type="foritem">
 <kw name="Connect Device" library="JunosDevice">
 <arguments>
@@ -11,27 +55,27 @@
 <arg>user=${USERNAME}</arg>
 <arg>password=${PASSWORD}</arg>
 </arguments>
-<msg timestamp="20200408 18:09:18.752" level="INFO">[host 127.0.0.1 session-id 29738] initialized: session-id=29738 | server_capabilities=&lt;dict_keyiterator object at 0x7f7f6545d818&gt;</msg>
-<status status="PASS" starttime="20200408 18:09:17.814" endtime="20200408 18:09:18.752"></status>
+<msg timestamp="20200409 14:36:22.436" level="INFO">[host 127.0.0.1 session-id 3887] initialized: session-id=3887 | server_capabilities=&lt;dict_keyiterator object at 0x7f481638a868&gt;</msg>
+<status status="PASS" starttime="20200409 14:36:22.168" endtime="20200409 14:36:22.437"></status>
 </kw>
 <kw name="Get Device Os Version" library="JunosDevice">
 <assign>
 <var>${version}</var>
 </assign>
-<msg timestamp="20200408 18:09:18.753" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:18.864" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:19.245" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:19.523" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:19.696" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:19.846" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:21.049" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:21.159" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:21.429" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:21.533" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:21.644" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:21.752" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:21.873" level="INFO">${version} = 19.4R1.10</msg>
-<status status="PASS" starttime="20200408 18:09:18.752" endtime="20200408 18:09:21.874"></status>
+<msg timestamp="20200409 14:36:22.437" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:22.540" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:22.662" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:22.779" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:22.920" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:23.026" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:23.552" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:23.656" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:23.768" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:23.870" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:23.975" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:24.078" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:24.183" level="INFO">${version} = 19.4R1.10</msg>
+<status status="PASS" starttime="20200409 14:36:22.437" endtime="20200409 14:36:24.183"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -39,13 +83,13 @@
 <arg>${version}</arg>
 <arg>${JUNOS}</arg>
 </arguments>
-<status status="PASS" starttime="20200408 18:09:21.874" endtime="20200408 18:09:21.874"></status>
+<status status="PASS" starttime="20200409 14:36:24.183" endtime="20200409 14:36:24.183"></status>
 </kw>
 <kw name="Close Device" library="JunosDevice">
-<msg timestamp="20200408 18:09:21.874" level="INFO">[host 127.0.0.1 session-id 29738] Requesting 'CloseSession'</msg>
-<status status="PASS" starttime="20200408 18:09:21.874" endtime="20200408 18:09:21.977"></status>
+<msg timestamp="20200409 14:36:24.184" level="INFO">[host 127.0.0.1 session-id 3887] Requesting 'CloseSession'</msg>
+<status status="PASS" starttime="20200409 14:36:24.183" endtime="20200409 14:36:24.289"></status>
 </kw>
-<status status="PASS" starttime="20200408 18:09:17.814" endtime="20200408 18:09:21.977"></status>
+<status status="PASS" starttime="20200409 14:36:22.168" endtime="20200409 14:36:24.289"></status>
 </kw>
 <kw name="${VQFX} = {'ip': '127.0.0.1', 'port': '2201'}" type="foritem">
 <kw name="Connect Device" library="JunosDevice">
@@ -55,27 +99,27 @@
 <arg>user=${USERNAME}</arg>
 <arg>password=${PASSWORD}</arg>
 </arguments>
-<msg timestamp="20200408 18:09:22.918" level="INFO">[host 127.0.0.1 session-id 29522] initialized: session-id=29522 | server_capabilities=&lt;dict_keyiterator object at 0x7f7f6419b9f8&gt;</msg>
-<status status="PASS" starttime="20200408 18:09:21.978" endtime="20200408 18:09:22.918"></status>
+<msg timestamp="20200409 14:36:24.554" level="INFO">[host 127.0.0.1 session-id 3808] initialized: session-id=3808 | server_capabilities=&lt;dict_keyiterator object at 0x7f481638aa98&gt;</msg>
+<status status="PASS" starttime="20200409 14:36:24.289" endtime="20200409 14:36:24.555"></status>
 </kw>
 <kw name="Get Device Os Version" library="JunosDevice">
 <assign>
 <var>${version}</var>
 </assign>
-<msg timestamp="20200408 18:09:22.918" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:23.031" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:23.316" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:23.924" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:24.102" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:24.251" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:25.493" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:25.611" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:25.881" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:25.987" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:26.107" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:26.220" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:26.365" level="INFO">${version} = 19.4R1.10</msg>
-<status status="PASS" starttime="20200408 18:09:22.918" endtime="20200408 18:09:26.365"></status>
+<msg timestamp="20200409 14:36:24.555" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:24.658" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:24.783" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:25.040" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:25.181" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:25.290" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:25.818" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:25.922" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:26.035" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:26.136" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:26.241" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:26.344" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:26.448" level="INFO">${version} = 19.4R1.10</msg>
+<status status="PASS" starttime="20200409 14:36:24.555" endtime="20200409 14:36:26.448"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -83,13 +127,13 @@
 <arg>${version}</arg>
 <arg>${JUNOS}</arg>
 </arguments>
-<status status="PASS" starttime="20200408 18:09:26.365" endtime="20200408 18:09:26.365"></status>
+<status status="PASS" starttime="20200409 14:36:26.449" endtime="20200409 14:36:26.449"></status>
 </kw>
 <kw name="Close Device" library="JunosDevice">
-<msg timestamp="20200408 18:09:26.366" level="INFO">[host 127.0.0.1 session-id 29522] Requesting 'CloseSession'</msg>
-<status status="PASS" starttime="20200408 18:09:26.365" endtime="20200408 18:09:26.475"></status>
+<msg timestamp="20200409 14:36:26.449" level="INFO">[host 127.0.0.1 session-id 3808] Requesting 'CloseSession'</msg>
+<status status="PASS" starttime="20200409 14:36:26.449" endtime="20200409 14:36:26.555"></status>
 </kw>
-<status status="PASS" starttime="20200408 18:09:21.977" endtime="20200408 18:09:26.475"></status>
+<status status="PASS" starttime="20200409 14:36:24.289" endtime="20200409 14:36:26.555"></status>
 </kw>
 <kw name="${VQFX} = {'ip': '127.0.0.1', 'port': '2202'}" type="foritem">
 <kw name="Connect Device" library="JunosDevice">
@@ -99,27 +143,27 @@
 <arg>user=${USERNAME}</arg>
 <arg>password=${PASSWORD}</arg>
 </arguments>
-<msg timestamp="20200408 18:09:27.431" level="INFO">[host 127.0.0.1 session-id 29411] initialized: session-id=29411 | server_capabilities=&lt;dict_keyiterator object at 0x7f7f6419bb38&gt;</msg>
-<status status="PASS" starttime="20200408 18:09:26.475" endtime="20200408 18:09:27.431"></status>
+<msg timestamp="20200409 14:36:26.825" level="INFO">[host 127.0.0.1 session-id 3726] initialized: session-id=3726 | server_capabilities=&lt;dict_keyiterator object at 0x7f481764c638&gt;</msg>
+<status status="PASS" starttime="20200409 14:36:26.555" endtime="20200409 14:36:26.825"></status>
 </kw>
 <kw name="Get Device Os Version" library="JunosDevice">
 <assign>
 <var>${version}</var>
 </assign>
-<msg timestamp="20200408 18:09:27.432" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:27.552" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:27.932" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:28.121" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:28.287" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:28.435" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:29.619" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:29.735" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:29.994" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:30.100" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:30.216" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:30.328" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:30.478" level="INFO">${version} = 19.4R1.10</msg>
-<status status="PASS" starttime="20200408 18:09:27.431" endtime="20200408 18:09:30.478"></status>
+<msg timestamp="20200409 14:36:26.825" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:26.928" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:27.063" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:27.181" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:27.325" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:27.430" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:27.957" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:28.062" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:28.175" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:28.280" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:28.383" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:28.487" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'ExecuteRpc'</msg>
+<msg timestamp="20200409 14:36:28.593" level="INFO">${version} = 19.4R1.10</msg>
+<status status="PASS" starttime="20200409 14:36:26.825" endtime="20200409 14:36:28.593"></status>
 </kw>
 <kw name="Should Be Equal As Strings" library="BuiltIn">
 <doc>Fails if objects are unequal after converting them to strings.</doc>
@@ -127,66 +171,22 @@
 <arg>${version}</arg>
 <arg>${JUNOS}</arg>
 </arguments>
-<status status="PASS" starttime="20200408 18:09:30.479" endtime="20200408 18:09:30.479"></status>
+<status status="PASS" starttime="20200409 14:36:28.593" endtime="20200409 14:36:28.593"></status>
 </kw>
 <kw name="Close Device" library="JunosDevice">
-<msg timestamp="20200408 18:09:30.479" level="INFO">[host 127.0.0.1 session-id 29411] Requesting 'CloseSession'</msg>
-<status status="PASS" starttime="20200408 18:09:30.479" endtime="20200408 18:09:30.586"></status>
+<msg timestamp="20200409 14:36:28.594" level="INFO">[host 127.0.0.1 session-id 3726] Requesting 'CloseSession'</msg>
+<status status="PASS" starttime="20200409 14:36:28.594" endtime="20200409 14:36:28.700"></status>
 </kw>
-<status status="PASS" starttime="20200408 18:09:26.475" endtime="20200408 18:09:30.586"></status>
+<status status="PASS" starttime="20200409 14:36:26.555" endtime="20200409 14:36:28.700"></status>
 </kw>
-<kw name="${VQFX} = {'ip': '127.0.0.1', 'port': '2203'}" type="foritem">
-<kw name="Connect Device" library="JunosDevice">
-<arguments>
-<arg>host=${VQFX['ip']}</arg>
-<arg>port=${VQFX['port']}</arg>
-<arg>user=${USERNAME}</arg>
-<arg>password=${PASSWORD}</arg>
-</arguments>
-<msg timestamp="20200408 18:09:31.494" level="INFO">[host 127.0.0.1 session-id 29347] initialized: session-id=29347 | server_capabilities=&lt;dict_keyiterator object at 0x7f7f6545d2c8&gt;</msg>
-<status status="PASS" starttime="20200408 18:09:30.587" endtime="20200408 18:09:31.494"></status>
+<status status="PASS" starttime="20200409 14:36:19.927" endtime="20200409 14:36:28.700"></status>
 </kw>
-<kw name="Get Device Os Version" library="JunosDevice">
-<assign>
-<var>${version}</var>
-</assign>
-<msg timestamp="20200408 18:09:31.495" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:31.612" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:31.972" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:32.267" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:32.433" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:32.580" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:33.815" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:33.928" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:34.180" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:34.285" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:34.400" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:34.511" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'ExecuteRpc'</msg>
-<msg timestamp="20200408 18:09:34.633" level="INFO">${version} = 19.4R1.10</msg>
-<status status="PASS" starttime="20200408 18:09:31.495" endtime="20200408 18:09:34.633"></status>
-</kw>
-<kw name="Should Be Equal As Strings" library="BuiltIn">
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<arguments>
-<arg>${version}</arg>
-<arg>${JUNOS}</arg>
-</arguments>
-<status status="PASS" starttime="20200408 18:09:34.633" endtime="20200408 18:09:34.633"></status>
-</kw>
-<kw name="Close Device" library="JunosDevice">
-<msg timestamp="20200408 18:09:34.634" level="INFO">[host 127.0.0.1 session-id 29347] Requesting 'CloseSession'</msg>
-<status status="PASS" starttime="20200408 18:09:34.634" endtime="20200408 18:09:34.739"></status>
-</kw>
-<status status="PASS" starttime="20200408 18:09:30.587" endtime="20200408 18:09:34.739"></status>
-</kw>
-<status status="PASS" starttime="20200408 18:09:17.813" endtime="20200408 18:09:34.739"></status>
-</kw>
-<status status="PASS" starttime="20200408 18:09:17.813" endtime="20200408 18:09:34.739" critical="yes"></status>
+<status status="PASS" starttime="20200409 14:36:19.927" endtime="20200409 14:36:28.700" critical="yes"></status>
 </test>
 <doc>This example demonstrates executing external junos library
 and checking the OS version of the device.
-Needs PyYAML library to import variables</doc>
-<status status="PASS" starttime="20200408 18:09:17.635" endtime="20200408 18:09:34.740"></status>
+Needs Python PyYAML library to import variables</doc>
+<status status="PASS" starttime="20200409 14:36:19.778" endtime="20200409 14:36:28.701"></status>
 </suite>
 <statistics>
 <total>
