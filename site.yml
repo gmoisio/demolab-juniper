@@ -19,8 +19,8 @@
     - role: underlay_bgp
       tags: [ bgp ]
     - role: check_bgp
-      tags: [ bgp, check_bgp ]
+      tags: [ check_bgp ]
     - role: underlay_ospf
       tags: [ ospf ]
     - role: check_ospf
-      tags: [ ospf, check_ospf ]
+      tags: [ check_ospf ]

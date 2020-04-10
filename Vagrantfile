@@ -18,6 +18,7 @@ Vagrant.configure("2") do |config|
 #######################
   (1..2).each do |id|
     re_name  = ( "spine0" + id.to_s ).to_sym
+    config.vm.boot_timeout = 600
     config.vm.define re_name do |vqfx|
       vqfx.vm.host_name = "spine0#{id}"
       vqfx.vm.box = "vqfx-19.4R1.10-re"
@@ -42,6 +43,7 @@ Vagrant.configure("2") do |config|
 #######################
   (1..2).each do |id|
     re_name  = ( "leaf0" + id.to_s ).to_sym
+    config.vm.boot_timeout = 600
     config.vm.define re_name do |vqfx|
       vqfx.vm.host_name = "leaf0#{id}"
       vqfx.vm.box = "vqfx-19.4R1.10-re"
@@ -73,7 +75,7 @@ Vagrant.configure("2") do |config|
                 "all:children" => ["qfx"]
             }
     ansible.playbook = "site.yml"
-    ansible.tags = "ospf"
+    ansible.tags = "bgp"
     ansible.extra_vars = { ansible_python_interpreter:"/usr/bin/python3" }
   end
 

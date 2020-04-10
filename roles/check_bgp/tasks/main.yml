@@ -99,8 +99,8 @@
 # One filename for all devices with same IP address does not permit to do an effective test with Vagrant
 #
 # Changes in /etc/jsnapy/jsnapy.cfg
-# Snapshots are in ~/juniper/demo-lab/roles/check_bgp/jsnapy/snapshots/
-# Testfiles are in ~/juniper/demo-lab/roles/check_bgp/jsnapy/testfiles
+# Snapshots are in ~/juniper/demolab-juniper/roles/check_bgp/jsnapy/snapshots
+# Testfiles are in ~/juniper/demolab-juniper/roles/check_bgp/jsnapy/testfiles
    - name: Execute JSNAPy snapcheck tests
      juniper_junos_jsnapy:
        provider: "{{ connection_settings }}"
